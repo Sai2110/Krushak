@@ -302,10 +302,13 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
     # AUTHENTICATION ROUTES
     @app.route("/api/auth/signup", methods=["POST"])
     def signup():
+        print("🔍 Signup endpoint reached")
         # Check if database is available
         db_check = check_database()
         if db_check:
+            print("❌ Database check failed")
             return db_check
+        print("✅ Database check passed")
             
         try:
             data = request.get_json(force=True)
@@ -362,10 +365,13 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
 
     @app.route("/api/auth/login", methods=["POST"])
     def login():
+        print("🔍 Login endpoint reached")
         # Check if database is available
         db_check = check_database()
         if db_check:
+            print("❌ Database check failed")
             return db_check
+        print("✅ Database check passed")
             
         try:
             data = request.get_json(force=True)
