@@ -178,7 +178,7 @@ const DashboardPage = () => {
             {/* Welcome Section */}
             <div className="text-center mb-6 sm:mb-8">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800 mb-2">
-                    {t('welcomeBackUser', { name: user?.name })}
+                    {t('welcomeBackUser').replace('{name}', user?.name || 'User')}
                 </h1>
                 <p className="text-base sm:text-lg text-gray-600">
                     {t('personalizedDashboard')}
