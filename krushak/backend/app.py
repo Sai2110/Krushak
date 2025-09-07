@@ -63,62 +63,62 @@ else:
         print("✅ Connected to MongoDB Atlas with certifi SSL!")
         db = client.krushak_db
     
-except Exception as e:
-    print(f"❌ Method 1 failed: {str(e)[:100]}...")
-    
-    try:
-        # Method 2: Try with SSL bypass for LibreSSL compatibility
-        print("🔄 Method 2: Using SSL bypass for LibreSSL compatibility...")
-        client = MongoClient(
-            mongo_uri,
-            tlsAllowInvalidCertificates=True,
-            tlsAllowInvalidHostnames=True,
-            serverSelectionTimeoutMS=10000,
-            connectTimeoutMS=10000,
-            socketTimeoutMS=20000
-        )
-        client.admin.command("ping")
-        print("✅ Connected to MongoDB Atlas with SSL bypass!")
-        db = client.krushak_db
-        
-    except Exception as e2:
-        print(f"❌ Method 2 failed: {str(e2)[:100]}...")
+    except Exception as e:
+        print(f"❌ Method 1 failed: {str(e)[:100]}...")
         
         try:
-            # Method 3: Try with direct connection using shard hostnames
-            print("🔄 Method 3: Direct connection to shard hosts...")
-            import re
+            # Method 2: Try with SSL bypass for LibreSSL compatibility
+            print("🔄 Method 2: Using SSL bypass for LibreSSL compatibility...")
+            client = MongoClient(
+                mongo_uri,
+                tlsAllowInvalidCertificates=True,
+                tlsAllowInvalidHostnames=True,
+                serverSelectionTimeoutMS=10000,
+                connectTimeoutMS=10000,
+                socketTimeoutMS=20000
+            )
+            client.admin.command("ping")
+            print("✅ Connected to MongoDB Atlas with SSL bypass!")
+            db = client.krushak_db
             
-            # Extract credentials from the URI
-            match = re.search(r'mongodb\+srv://([^:]+):([^@]+)@([^/]+)/(.+)', mongo_uri)
-            if match:
-                username, password, cluster, db_name = match.groups()
+        except Exception as e2:
+            print(f"❌ Method 2 failed: {str(e2)[:100]}...")
+            
+            try:
+                # Method 3: Try with direct connection using shard hostnames
+                print("🔄 Method 3: Direct connection to shard hosts...")
+                import re
                 
-                # Use the specific shard hostnames from the error messages
-                direct_uri = f"mongodb://{username}:{password}@ac-zkjmii8-shard-00-00.hco3xca.mongodb.net:27017,ac-zkjmii8-shard-00-01.hco3xca.mongodb.net:27017,ac-zkjmii8-shard-00-02.hco3xca.mongodb.net:27017/{db_name}?ssl=true&replicaSet=atlas-14b8vj-shard-0&authSource=admin&retryWrites=true&w=majority"
-                
-                client = MongoClient(
-                    direct_uri,
-                    tlsAllowInvalidCertificates=True,
-                    tlsAllowInvalidHostnames=True,
-                    serverSelectionTimeoutMS=10000
-                )
-                client.admin.command("ping")
-                print("✅ Connected to MongoDB Atlas with direct connection!")
-                db = client.krushak_db
-            else:
-                raise Exception("Could not parse MongoDB URI")
-                
-        except Exception as e3:
-            print(f"❌ Method 3 failed: {str(e3)[:100]}...")
-            print("💥 All MongoDB connection methods failed!")
-            print("🔧 Troubleshooting suggestions:")
-            print("   1. Check your internet connection")
-            print("   2. Verify MongoDB Atlas cluster is running")
-            print("   3. Check if your IP is whitelisted in MongoDB Atlas")
-            print("   4. Verify MONGODB_URI in .env file")
-            print("   5. Try using MongoDB Compass to test connection")
-            raise e3
+                # Extract credentials from the URI
+                match = re.search(r'mongodb\+srv://([^:]+):([^@]+)@([^/]+)/(.+)', mongo_uri)
+                if match:
+                    username, password, cluster, db_name = match.groups()
+                    
+                    # Use the specific shard hostnames from the error messages
+                    direct_uri = f"mongodb://{username}:{password}@ac-zkjmii8-shard-00-00.hco3xca.mongodb.net:27017,ac-zkjmii8-shard-00-01.hco3xca.mongodb.net:27017,ac-zkjmii8-shard-00-02.hco3xca.mongodb.net:27017/{db_name}?ssl=true&replicaSet=atlas-14b8vj-shard-0&authSource=admin&retryWrites=true&w=majority"
+                    
+                    client = MongoClient(
+                        direct_uri,
+                        tlsAllowInvalidCertificates=True,
+                        tlsAllowInvalidHostnames=True,
+                        serverSelectionTimeoutMS=10000
+                    )
+                    client.admin.command("ping")
+                    print("✅ Connected to MongoDB Atlas with direct connection!")
+                    db = client.krushak_db
+                else:
+                    raise Exception("Could not parse MongoDB URI")
+                    
+            except Exception as e3:
+                print(f"❌ Method 3 failed: {str(e3)[:100]}...")
+                print("💥 All MongoDB connection methods failed!")
+                print("🔧 Troubleshooting suggestions:")
+                print("   1. Check your internet connection")
+                print("   2. Verify MongoDB Atlas cluster is running")
+                print("   3. Check if your IP is whitelisted in MongoDB Atlas")
+                print("   4. Verify MONGODB_URI in .env file")
+                print("   5. Try using MongoDB Compass to test connection")
+                raise e3
 
 # If we're in build mode, set dummy values
 if client is None:
