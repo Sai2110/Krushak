@@ -45,6 +45,7 @@ print(f"🔗 Connecting to MongoDB Atlas...")
 # Check if we're in build mode (no MONGODB_URI set)
 if os.getenv("MONGODB_URI") is None:
     print("⚠️  Build mode detected - skipping MongoDB connection")
+    print(f"⚠️  MONGODB_URI value: {os.getenv('MONGODB_URI')}")
     client = None
     db = None
 else:
@@ -129,6 +130,7 @@ else:
 # Helper function to check if database is available
 def check_database():
     if db is None:
+        print("❌ Database not available - running in build mode")
         return jsonify({"error": "Database not available in build mode"}), 503
     return None
 
