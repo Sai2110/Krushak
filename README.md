@@ -5,13 +5,13 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0+-38b2ac.svg)](https://tailwindcss.com)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green.svg)](https://mongodb.com)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Online-brightgreen.svg)](https://krushakfrontend.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Online-brightgreen.svg)](https://krushak-app.vercel.app)
 
 A comprehensive full-stack application that uses machine learning to provide intelligent fertilizer recommendations for farmers. Built with Flask backend, React frontend, and MongoDB Atlas integration.
 
 ## 🌐 Live Demo
 
-**🚀 [Try the Application Live](https://krushakfrontend.vercel.app)**
+**🚀 [Try the Application Live](https://krushak-app.vercel.app)**
 
 Experience the full functionality of Krushak with real-time predictions, multi-language support, and comprehensive reporting.
 
@@ -51,7 +51,7 @@ Experience the full functionality of Krushak with real-time predictions, multi-l
 ## 🚀 Quick Start
 
 ### Option 1: Try the Live Demo
-**🌐 [Access the deployed application](https://krushakfrontend.vercel.app)** - No setup required!
+**🌐 [Access the deployed application](https://krushak-app.vercel.app)** - No setup required!
 
 ### Option 2: Run Locally
 
