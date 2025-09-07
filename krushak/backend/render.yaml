@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: krushak-backend
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python train.py"
+    startCommand: "python app.py"
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: PORT
+        value: 10000
