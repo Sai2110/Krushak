@@ -160,9 +160,9 @@ dmypy.json
 .pyre/
 
 # Machine Learning models (if large)
-*.joblib
-*.pkl
-*.pickle
+# *.joblib
+# *.pkl
+# *.pickle
 
 # Database files
 *.db
