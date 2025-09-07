@@ -120,11 +120,11 @@ else:
                 print("   5. Try using MongoDB Compass to test connection")
                 raise e3
 
-# If we're in build mode, set dummy values
-if client is None:
-    print("⚠️  Using dummy database connection for build process")
-    client = None
-    db = None
+    # If we're in build mode, set dummy values
+    if client is None:
+        print("⚠️  Using dummy database connection for build process")
+        client = None
+        db = None
 
 # Helper function to check if database is available
 def check_database():
