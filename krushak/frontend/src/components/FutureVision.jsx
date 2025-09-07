@@ -17,70 +17,64 @@ export default function FutureVision() {
 
   const features = [
     {
-      title: "Multilingual Support",
-      description:
-        "Full support for Hindi, Marathi, Telugu, and more regional languages to serve farmers across India.",
+      title: t('multilingualSupport'),
+      description: t('multilingualSupportDesc'),
       icon: Globe,
       color: "text-blue-500",
       bgColor: "bg-blue-50",
-      status: "Available Now",
+      status: t('availableNow'),
     },
     {
-      title: "AI-Powered Disease Detection",
-      description:
-        "Advanced computer vision to identify crop diseases and pests from smartphone photos.",
+      title: t('aiDiseaseDetection'),
+      description: t('aiDiseaseDetectionDesc'),
       icon: Brain,
       color: "text-purple-500",
       bgColor: "bg-purple-50",
-      status: "Coming Soon",
+      status: t('comingSoon'),
     },
     {
-      title: "Marketplace Integration",
-      description:
-        "Connect directly with fertilizer suppliers and get the best prices for recommended products.",
+      title: t('marketplaceIntegration'),
+      description: t('marketplaceIntegrationDesc'),
       icon: ShoppingCart,
       color: "text-green-500",
       bgColor: "bg-green-50",
-      status: "In Development",
+      status: t('inDevelopment'),
     },
     {
-      title: "Mobile App",
-      description:
-        "Native mobile application for Android and iOS with offline capabilities and GPS integration.",
+      title: t('mobileApp'),
+      description: t('mobileAppDesc'),
       icon: Smartphone,
       color: "text-orange-500",
       bgColor: "bg-orange-50",
-      status: "Planned",
+      status: t('planned'),
     },
     {
-      title: "Organic Farming Focus",
-      description:
-        "Specialized recommendations for organic farming practices and sustainable agriculture.",
+      title: t('organicFarmingFocus'),
+      description: t('organicFarmingFocusDesc'),
       icon: Leaf,
       color: "text-emerald-500",
       bgColor: "bg-emerald-50",
-      status: "In Development",
+      status: t('inDevelopment'),
     },
     {
-      title: "Real-time Alerts",
-      description:
-        "Weather-based alerts and notifications for optimal farming decisions and crop protection.",
+      title: t('realTimeAlerts'),
+      description: t('realTimeAlertsDesc'),
       icon: Zap,
       color: "text-yellow-500",
       bgColor: "bg-yellow-50",
-      status: "Coming Soon",
+      status: t('comingSoon'),
     },
   ];
 
   const getStatusColor = (status) => {
     switch (status) {
-      case "Available Now":
+      case t('availableNow'):
         return "bg-green-100 text-green-800";
-      case "Coming Soon":
+      case t('comingSoon'):
         return "bg-blue-100 text-blue-800";
-      case "In Development":
+      case t('inDevelopment'):
         return "bg-yellow-100 text-yellow-800";
-      case "Planned":
+      case t('planned'):
         return "bg-gray-100 text-gray-800";
       default:
         return "bg-gray-100 text-gray-800";

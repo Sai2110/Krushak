@@ -122,15 +122,15 @@ export default function WeatherWidget() {
                 {weatherData?.weather?.[0]?.description || 'Clear'}
               </div>
               <div className="text-xs text-gray-500">
-                Feels like {Math.round(weatherData?.main?.feels_like || 0)}°C
+                {t('feelsLike')} {Math.round(weatherData?.main?.feels_like || 0)}°C
               </div>
             </div>
             <div className="text-right">
               <div className="text-sm text-gray-600">
-                H: {Math.round(weatherData?.main?.temp_max || 0)}°C
+                {t('high')}: {Math.round(weatherData?.main?.temp_max || 0)}°C
               </div>
               <div className="text-sm text-gray-600">
-                L: {Math.round(weatherData?.main?.temp_min || 0)}°C
+                {t('low')}: {Math.round(weatherData?.main?.temp_min || 0)}°C
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function WeatherWidget() {
             <Droplets className="h-5 w-5 text-blue-500" />
             <div>
               <p className="text-sm font-medium">{weatherData?.main?.humidity || 0}%</p>
-              <p className="text-xs text-gray-500">Humidity</p>
+              <p className="text-xs text-gray-500">{t('humidity')}</p>
             </div>
           </div>
           
@@ -152,7 +152,7 @@ export default function WeatherWidget() {
               <p className="text-sm font-medium">
                 {weatherData?.wind?.speed || 0} m/s {getWindDirection(weatherData?.wind?.deg || 0)}
               </p>
-              <p className="text-xs text-gray-500">Wind</p>
+              <p className="text-xs text-gray-500">{t('wind')}</p>
             </div>
           </div>
           
@@ -160,7 +160,7 @@ export default function WeatherWidget() {
             <Gauge className="h-5 w-5 text-purple-500" />
             <div>
               <p className="text-sm font-medium">{weatherData?.main?.pressure || 0} hPa</p>
-              <p className="text-xs text-gray-500">Pressure</p>
+              <p className="text-xs text-gray-500">{t('pressure')}</p>
             </div>
           </div>
           
@@ -170,7 +170,7 @@ export default function WeatherWidget() {
               <p className="text-sm font-medium">
                 {weatherData?.visibility ? `${(weatherData.visibility / 1000).toFixed(1)} km` : 'N/A'}
               </p>
-              <p className="text-xs text-gray-500">Visibility</p>
+              <p className="text-xs text-gray-500">{t('visibility')}</p>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function WeatherWidget() {
               <p className="text-sm font-medium">
                 {weatherData?.rain?.['1h'] ? `${weatherData.rain['1h']}mm` : '0mm'}
               </p>
-              <p className="text-xs text-gray-500">Rain (1h)</p>
+              <p className="text-xs text-gray-500">{t('rain1h')}</p>
             </div>
           </div>
           
@@ -193,7 +193,7 @@ export default function WeatherWidget() {
               <p className="text-sm font-medium">
                 {weatherData?.sys?.sunrise ? formatTime(weatherData.sys.sunrise) : 'N/A'}
               </p>
-              <p className="text-xs text-gray-500">Sunrise</p>
+              <p className="text-xs text-gray-500">{t('sunrise')}</p>
             </div>
           </div>
         </div>

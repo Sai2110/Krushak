@@ -40,7 +40,7 @@ export default function PredictionPage() {
             className="mb-4"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Home
+{t('backToHome')}
           </Button>
           <div className="text-center">
             <h1 className="text-4xl font-bold text-primary-dark mb-2 flex items-center justify-center gap-3">
@@ -48,7 +48,7 @@ export default function PredictionPage() {
               {t('fertilizerPrediction')}
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Get AI-powered fertilizer recommendations based on your soil conditions and weather data
+              {t('getRecommendationDesc')}
             </p>
           </div>
         </div>
@@ -69,10 +69,10 @@ export default function PredictionPage() {
                   <div className="text-center">
                     <h2 className="text-2xl font-bold mb-2 flex items-center justify-center gap-2">
                       <Brain className="h-6 w-6" />
-                      Analysis Complete!
+                      {t('analysisComplete')}
                     </h2>
                     <p className="opacity-90">
-                      Your soil analysis and fertilizer recommendations are ready
+                      {t('analysisCompleteDesc')}
                     </p>
                   </div>
                 </CardContent>
@@ -95,7 +95,7 @@ export default function PredictionPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <FileText className="h-5 w-5 text-primary" />
-                    Download Detailed Report
+                    {t('downloadDetailedReport')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>

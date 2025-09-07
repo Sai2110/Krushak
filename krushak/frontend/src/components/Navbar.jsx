@@ -75,7 +75,7 @@ export default function Navbar() {
                 {link('/', t('home'))}
                 {link('/prediction', t('prediction'))}
                 {link('/health', t('cropHealth'))}
-                {link('/dashboard', 'Dashboard')}
+                {link('/dashboard', t('dashboard'))}
               </div>
             )}
             
@@ -99,19 +99,19 @@ export default function Navbar() {
                     className="border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400"
                   >
                     <LogOut className="h-4 w-4 mr-1" />
-                    Logout
+                    {t('logout')}
                   </Button>
                 </div>
               ) : (
                 <div className="flex items-center space-x-2">
-                  {link('/login', "Login")}
-                  {link('/signup', "Sign Up")}
+                  {link('/login', t('login'))}
+                  {link('/signup', t('signUp'))}
                 </div>
               )}
               
               {/* Language Selector */}
               <div className="flex items-center space-x-2">
-                <span className="text-xs text-gray-500 hidden lg:block">Language:</span>
+                <span className="text-xs text-gray-500 hidden lg:block">{t('language')}</span>
                 <select 
                   value={i18n.language} 
                   onChange={(e) => changeLanguage(e.target.value)}
@@ -156,26 +156,26 @@ export default function Navbar() {
                   {link('/', t('home'), () => setIsMobileMenuOpen(false))}
                   {link('/prediction', t('prediction'), () => setIsMobileMenuOpen(false))}
                   {link('/health', t('cropHealth'), () => setIsMobileMenuOpen(false))}
-                  {link('/dashboard', 'Dashboard', () => setIsMobileMenuOpen(false))}
+                  {link('/dashboard', t('dashboard'), () => setIsMobileMenuOpen(false))}
                   <Button 
                     onClick={handleLogout} 
                     variant="outline"
                     className="mt-2 border-red-300 text-red-600 hover:bg-red-50"
                   >
                     <LogOut className="h-4 w-4 mr-2" />
-                    Logout
+                    {t('logout')}
                   </Button>
                 </>
               ) : (
                 <>
-                  {link('/login', "Login", () => setIsMobileMenuOpen(false))}
-                  {link('/signup', "Sign Up", () => setIsMobileMenuOpen(false))}
+                  {link('/login', t('login'), () => setIsMobileMenuOpen(false))}
+                  {link('/signup', t('signUp'), () => setIsMobileMenuOpen(false))}
                 </>
               )}
               
               {/* Mobile Language Selector */}
               <div className="flex items-center justify-between px-3 py-2">
-                <span className="text-sm text-gray-600">Language:</span>
+                <span className="text-sm text-gray-600">{t('language')}</span>
                 <select 
                   value={i18n.language} 
                   onChange={(e) => changeLanguage(e.target.value)}

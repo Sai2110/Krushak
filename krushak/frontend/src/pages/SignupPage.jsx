@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { Input } from '../components/ui/input';
@@ -7,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Label } from '../components/ui/label';
 
 const SignupPage = () => {
+    const { t } = useTranslation();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,19 +20,19 @@ const SignupPage = () => {
 
     const validateForm = () => {
         if (!name.trim()) {
-            setError('Name is required');
+            setError(t('nameRequired'));
             return false;
         }
         if (!email.trim()) {
-            setError('Email is required');
+            setError(t('emailRequired'));
             return false;
         }
         if (password.length < 6) {
-            setError('Password must be at least 6 characters long');
+            setError(t('passwordMinLength'));
             return false;
         }
         if (password !== confirmPassword) {
-            setError('Passwords do not match');
+            setError(t('passwordsDoNotMatch'));
             return false;
         }
         return true;
@@ -58,7 +60,7 @@ const SignupPage = () => {
                 setError(result.error);
             }
         } catch (err) {
-            setError('An unexpected error occurred. Please try again.');
+            setError(t('unexpectedError'));
         } finally {
             setIsLoading(false);
         }
@@ -69,20 +71,20 @@ const SignupPage = () => {
             <Card className="w-[400px] shadow-xl border-0">
                 <CardHeader className="text-center pb-2">
                     <CardTitle className="text-3xl font-bold text-green-700 mb-2">
-                        Join Krushak
+                        {t('joinKrushak')}
                     </CardTitle>
-                    <p className="text-gray-600">Create your account to get started</p>
+                    <p className="text-gray-600">{t('createAccount')}</p>
                 </CardHeader>
                 <CardContent className="pt-4">
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid gap-2">
                             <Label htmlFor="name" className="text-sm font-medium text-gray-700">
-                                Full Name
+                                {t('fullName')}
                             </Label>
                             <Input
                                 id="name"
                                 type="text"
-                                placeholder="Enter your full name"
+                                placeholder={t('enterFullName')}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required
@@ -92,12 +94,12 @@ const SignupPage = () => {
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                                Email Address
+                                {t('emailAddress')}
                             </Label>
                             <Input
                                 id="email"
                                 type="email"
-                                placeholder="Enter your email"
+                                placeholder={t('enterEmail')}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
@@ -107,12 +109,12 @@ const SignupPage = () => {
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="password" className="text-sm font-medium text-gray-700">
-                                Password
+                                {t('password')}
                             </Label>
                             <Input
                                 id="password"
                                 type="password"
-                                placeholder="Create a password (min. 6 characters)"
+                                placeholder={t('createPassword')}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
@@ -122,12 +124,12 @@ const SignupPage = () => {
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700">
-                                Confirm Password
+                                {t('confirmPassword')}
                             </Label>
                             <Input
                                 id="confirmPassword"
                                 type="password"
-                                placeholder="Confirm your password"
+                                placeholder={t('confirmYourPassword')}
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 required
@@ -147,17 +149,17 @@ const SignupPage = () => {
                             className="w-full bg-green-600 hover:bg-green-700 text-white h-11 font-medium"
                             disabled={isLoading}
                         >
-                            {isLoading ? 'Creating Account...' : 'Create Account'}
+                            {isLoading ? t('creatingAccount') : t('createAccountBtn')}
                         </Button>
                         
                         <div className="text-center">
                             <p className="text-sm text-gray-600">
-                                Already have an account?{' '}
+                                {t('alreadyHaveAccount')}{' '}
                                 <Link 
                                     to="/login" 
                                     className="text-green-600 hover:text-green-700 font-medium"
                                 >
-                                    Sign in here
+                                    {t('signInHere')}
                                 </Link>
                             </p>
                         </div>

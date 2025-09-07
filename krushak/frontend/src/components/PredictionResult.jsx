@@ -23,7 +23,7 @@ export default function PredictionResult({ results }) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Brain className="h-5 w-5 text-primary" />
-          All Model Predictions
+{t('mlModelPredictions')}
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -38,14 +38,14 @@ export default function PredictionResult({ results }) {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">{name}</h4>
-                    <p className="text-sm text-gray-600">Machine Learning Model</p>
+                    <p className="text-sm text-gray-600">{t('machineLearningModel')}</p>
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="text-lg font-bold text-primary">
                     {results[name].prediction}
                   </p>
-                  <p className="text-sm text-gray-500">{confidence}% confidence</p>
+                  <p className="text-sm text-gray-500">{confidence}% {t('confidence')}</p>
                 </div>
               </div>
             )

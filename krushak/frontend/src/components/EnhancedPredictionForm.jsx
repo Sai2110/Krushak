@@ -115,7 +115,7 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
           } else {
             // Show success message in the UI instead of alert
             setError(''); // Clear any previous errors
-            setSuccess("✅ Prediction saved successfully! Check your dashboard to view it.");
+            setSuccess(t('predictionSaved'));
           }
         } catch (saveError) {
           console.error("Error saving prediction to user history:", saveError);
@@ -154,7 +154,7 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
                 <Input
                   id="city"
                   type="text"
-                  placeholder="Enter city name (e.g., Pune, Mumbai, Delhi)"
+                  placeholder={t('enterCityName')}
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   className="flex-1"
@@ -303,14 +303,14 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
             <div>
               <h4 className="font-semibold mb-4 flex items-center gap-2">
                 <Leaf className="h-4 w-4 text-green-500" />
-                Soil & Crop Parameters
+{t('soilCropParameters')}
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="soilType">{t('soilType')}</Label>
                   <Select value={form.Soil_Type} onValueChange={(value) => update('Soil_Type', value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select soil type" />
+                      <SelectValue placeholder={t('selectSoilType')} />
                     </SelectTrigger>
                     <SelectContent>
                       {soilTypes.map((type) => (
@@ -323,7 +323,7 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
                   <Label htmlFor="cropType">{t('cropType')}</Label>
                   <Select value={form.Crop_Type} onValueChange={(value) => update('Crop_Type', value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select crop type" />
+                      <SelectValue placeholder={t('selectCropType')} />
                     </SelectTrigger>
                     <SelectContent>
                       {cropTypes.map((crop) => (
@@ -339,7 +339,7 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
             <div>
               <h4 className="font-semibold mb-4 flex items-center gap-2">
                 <Zap className="h-4 w-4 text-purple-500" />
-                Nutrient Parameters (ppm)
+{t('nutrientParameters')}
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">

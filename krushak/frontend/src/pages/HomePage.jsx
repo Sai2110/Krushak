@@ -42,7 +42,7 @@ export default function HomePage() {
                 size="lg"
                 className="text-lg px-8 py-3"
               >
-                Learn More
+{t('learnMore')}
               </Button>
             </Link>
           </div>
@@ -61,24 +61,23 @@ export default function HomePage() {
                 <CardContent className="p-8 flex items-center justify-center">
                   <div className="text-center">
                     <h3 className="text-2xl font-bold text-primary-dark mb-4">
-                      Real-time Agricultural Intelligence
+                      {t('realTimeIntelligence')}
                     </h3>
                     <p className="text-gray-600 mb-6">
-                      Get weather data and soil insights to make informed farming decisions. 
-                      Our system combines current conditions with historical data for accurate recommendations.
+                      {t('realTimeIntelligenceDesc')}
                     </p>
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div>
                         <div className="text-2xl font-bold text-primary">5+</div>
-                        <div className="text-sm text-gray-600">ML Models</div>
+                        <div className="text-sm text-gray-600">{t('mlModels')}</div>
                       </div>
                       <div>
                         <div className="text-2xl font-bold text-primary">92%</div>
-                        <div className="text-sm text-gray-600">Accuracy</div>
+                        <div className="text-sm text-gray-600">{t('accuracy')}</div>
                       </div>
                       <div>
                         <div className="text-2xl font-bold text-primary">10K+</div>
-                        <div className="text-sm text-gray-600">Data Points</div>
+                        <div className="text-sm text-gray-600">{t('dataPoints')}</div>
                       </div>
                     </div>
                   </div>
@@ -98,7 +97,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary-dark mb-4">{t('whyKrushak')}</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover why thousands of farmers trust Krushak for their agricultural decisions
+              {t('discoverWhy')}
             </p>
           </div>
           

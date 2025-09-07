@@ -80,7 +80,7 @@ export default function TestimonialsCarousel() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-primary-dark mb-4">{t('whatFarmersSay')}</h2>
           <p className="text-lg text-gray-600">
-            Hear from farmers who have transformed their agricultural practices with Krushak
+            {t('hearFromFarmers')}
           </p>
         </div>
 

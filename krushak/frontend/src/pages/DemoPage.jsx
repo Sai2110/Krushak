@@ -53,51 +53,51 @@ export default function DemoPage() {
             className="mb-4"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Home
+{t('backToHome')}
           </Button>
-          <h1 className="text-3xl font-bold text-primary-dark mb-2">Krushak Demo</h1>
-          <p className="text-gray-600">See how Krushak works with sample data</p>
+          <h1 className="text-3xl font-bold text-primary-dark mb-2">{t('krushakDemo')}</h1>
+          <p className="text-gray-600">{t('seeHowWorks')}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Input Data */}
           <Card>
             <CardHeader>
-              <CardTitle>Sample Input Data</CardTitle>
+              <CardTitle>{t('sampleInputData')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Temperature</label>
+                    <label className="text-sm font-medium text-gray-600">{t('temperature')}</label>
                     <p className="text-lg font-semibold">{demoData.input.temperature}°C</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Humidity</label>
+                    <label className="text-sm font-medium text-gray-600">{t('humidity')}</label>
                     <p className="text-lg font-semibold">{demoData.input.humidity}%</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Moisture</label>
+                    <label className="text-sm font-medium text-gray-600">{t('moisture')}</label>
                     <p className="text-lg font-semibold">{demoData.input.moisture}%</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Soil Type</label>
+                    <label className="text-sm font-medium text-gray-600">{t('soilType')}</label>
                     <p className="text-lg font-semibold">{demoData.input.soilType}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Crop Type</label>
+                    <label className="text-sm font-medium text-gray-600">{t('cropType')}</label>
                     <p className="text-lg font-semibold">{demoData.input.cropType}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Nitrogen</label>
+                    <label className="text-sm font-medium text-gray-600">{t('nitrogen')}</label>
                     <p className="text-lg font-semibold">{demoData.input.nitrogen} ppm</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Potassium</label>
+                    <label className="text-sm font-medium text-gray-600">{t('potassium')}</label>
                     <p className="text-lg font-semibold">{demoData.input.potassium} ppm</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Phosphorus</label>
+                    <label className="text-sm font-medium text-gray-600">{t('phosphorus')}</label>
                     <p className="text-lg font-semibold">{demoData.input.phosphorus} ppm</p>
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export default function DemoPage() {
           {/* Predictions */}
           <Card>
             <CardHeader>
-              <CardTitle>ML Model Predictions</CardTitle>
+              <CardTitle>{t('mlModelPredictions')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -117,7 +117,7 @@ export default function DemoPage() {
                     <div className="flex justify-between items-center mb-2">
                       <h4 className="font-semibold">{model}</h4>
                       <span className="text-sm text-gray-600">
-                        {(result.confidence * 100).toFixed(0)}% confidence
+                        {(result.confidence * 100).toFixed(0)}% {t('confidence')}
                       </span>
                     </div>
                     <p className="text-lg font-bold text-primary">{result.prediction}</p>
@@ -130,7 +130,7 @@ export default function DemoPage() {
           {/* Soil Health */}
           <Card className="lg:col-span-2">
             <CardHeader>
-              <CardTitle>Soil Health Analysis</CardTitle>
+              <CardTitle>{t('soilHealthAnalysis')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-3 gap-6">
@@ -138,25 +138,25 @@ export default function DemoPage() {
                   <div className="text-3xl font-bold text-primary mb-2">
                     {demoData.soilHealth.healthScore}/100
                   </div>
-                  <p className="text-sm text-gray-600">Health Score</p>
+                  <p className="text-sm text-gray-600">{t('healthScore')}</p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-green-600 mb-2">
                     {demoData.soilHealth.status}
                   </div>
-                  <p className="text-sm text-gray-600">Overall Status</p>
+                  <p className="text-sm text-gray-600">{t('overallStatus')}</p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-blue-600 mb-2">
                     {demoData.soilHealth.insights.length}
                   </div>
-                  <p className="text-sm text-gray-600">Key Insights</p>
+                  <p className="text-sm text-gray-600">{t('keyInsights')}</p>
                 </div>
               </div>
               
               <div className="mt-6 grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold mb-3">Insights</h4>
+                  <h4 className="font-semibold mb-3">{t('insights')}</h4>
                   <ul className="space-y-2">
                     {demoData.soilHealth.insights.map((insight, index) => (
                       <li key={index} className="text-sm text-gray-700 flex items-start">
@@ -167,7 +167,7 @@ export default function DemoPage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-3">Recommendations</h4>
+                  <h4 className="font-semibold mb-3">{t('recommendations')}</h4>
                   <ul className="space-y-2">
                     {demoData.soilHealth.recommendations.map((rec, index) => (
                       <li key={index} className="text-sm text-gray-700 flex items-start">
@@ -186,9 +186,9 @@ export default function DemoPage() {
         <div className="text-center mt-8">
           <Card className="bg-gradient-to-r from-primary to-green-600 text-white border-0">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Ready to Try It Yourself?</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('readyToTry')}</h3>
               <p className="text-lg mb-6 opacity-90">
-                Enter your own soil data and get personalized recommendations
+                {t('enterOwnData')}
               </p>
               <Button 
                 size="lg"
@@ -196,7 +196,7 @@ export default function DemoPage() {
                 onClick={() => window.location.href = '/'}
               >
                 <Play className="h-5 w-5 mr-2" />
-                Start Predicting Now
+                {t('startPredictingNow')}
               </Button>
             </CardContent>
           </Card>

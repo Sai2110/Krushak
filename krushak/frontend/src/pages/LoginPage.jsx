@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { Input } from '../components/ui/input';
@@ -7,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Label } from '../components/ui/label';
 
 const LoginPage = () => {
+    const { t } = useTranslation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -27,7 +29,7 @@ const LoginPage = () => {
                 setError(result.error);
             }
         } catch (err) {
-            setError('An unexpected error occurred. Please try again.');
+            setError(t('unexpectedError'));
         } finally {
             setIsLoading(false);
         }
@@ -39,20 +41,20 @@ const LoginPage = () => {
             <Card className="w-[400px] shadow-xl border-0">
                 <CardHeader className="text-center pb-2">
                     <CardTitle className="text-3xl font-bold text-green-700 mb-2">
-                        Welcome Back
+                        {t('welcomeBack')}
                     </CardTitle>
-                    <p className="text-gray-600">Sign in to your Krushak account</p>
+                    <p className="text-gray-600">{t('signInAccount')}</p>
                 </CardHeader>
                 <CardContent className="pt-4">
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid gap-2">
                             <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                                Email Address
+                                {t('emailAddress')}
                             </Label>
                             <Input
                                 id="email"
                                 type="email"
-                                placeholder="Enter your email"
+                                placeholder={t('enterEmail')}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
@@ -62,12 +64,12 @@ const LoginPage = () => {
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="password" className="text-sm font-medium text-gray-700">
-                                Password
+                                {t('password')}
                             </Label>
                             <Input
                                 id="password"
                                 type="password"
-                                placeholder="Enter your password"
+                                placeholder={t('enterPassword')}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
@@ -87,12 +89,12 @@ const LoginPage = () => {
                             className="w-full bg-green-600 hover:bg-green-700 text-white h-11 font-medium"
                             disabled={isLoading}
                         >
-                            {isLoading ? 'Signing In...' : 'Sign In'}
+                            {isLoading ? t('signingIn') : t('signIn')}
                         </Button>
                         
                         {/* Test Credentials */}
                         <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
-                            <h4 className="text-sm font-semibold text-blue-800 mb-2">🧪 Test Credentials</h4>
+                            <h4 className="text-sm font-semibold text-blue-800 mb-2">🧪 {t('testCredentials')}</h4>
                             <div className="text-xs text-blue-700 space-y-1">
                                 <p><strong>Email:</strong> Test@gmail.com</p>
                                 <p><strong>Password:</strong> 123456</p>
@@ -101,12 +103,12 @@ const LoginPage = () => {
                         
                         <div className="text-center">
                             <p className="text-sm text-gray-600">
-                                Don't have an account?{' '}
+                                {t('dontHaveAccount')}{' '}
                                 <Link 
                                     to="/signup" 
                                     className="text-green-600 hover:text-green-700 font-medium"
                                 >
-                                    Sign up here
+                                    {t('signUpHere')}
                                 </Link>
                             </p>
                         </div>
