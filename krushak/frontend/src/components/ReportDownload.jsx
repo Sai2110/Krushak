@@ -53,30 +53,30 @@ export default function ReportDownload({ inputData, predictions, soilHealth, wea
   }
 
   return (
-    <div className="mt-6 p-4 border rounded-lg bg-white shadow-sm">
-      <h3 className="text-lg font-semibold mb-3 text-primary-dark">{t('downloadReport')}</h3>
+    <div className="mt-4 sm:mt-6 p-3 sm:p-4 border rounded-lg bg-white shadow-sm">
+      <h3 className="text-base sm:text-lg font-semibold mb-3 text-primary-dark">{t('downloadReport')}</h3>
       
-      <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
         <button
           onClick={() => downloadReport('pdf')}
           disabled={downloading === 'pdf' || !predictions}
-          className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
         >
-          <FaFilePdf />
+          <FaFilePdf className="text-sm sm:text-base" />
           {downloading === 'pdf' ? 'Generating...' : t('downloadPDF')}
         </button>
         
         <button
           onClick={() => downloadReport('excel')}
           disabled={downloading === 'excel' || !predictions}
-          className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
         >
-          <FaFileExcel />
+          <FaFileExcel className="text-sm sm:text-base" />
           {downloading === 'excel' ? 'Generating...' : t('downloadExcel')}
         </button>
       </div>
       
-      <div className="mt-3 text-sm text-gray-600">
+      <div className="mt-3 text-xs sm:text-sm text-gray-600">
         <p>Reports include:</p>
         <ul className="list-disc list-inside mt-1 space-y-1">
           <li>Input parameters and weather data</li>

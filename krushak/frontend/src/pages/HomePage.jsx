@@ -18,31 +18,31 @@ export default function HomePage() {
   return (
     <div className="space-y-0">
       {/* Hero Section */}
-      <section className="text-center py-12 bg-gradient-to-br from-primary/5 to-green-100/30">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-primary-dark mb-6">
+      <section className="text-center py-8 sm:py-12 bg-gradient-to-br from-primary/5 to-green-100/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-dark mb-4 sm:mb-6 leading-tight">
             {t('title')}
           </h1>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
             {t('subtitle')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/prediction">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+            <Link to="/prediction" className="w-full sm:w-auto">
               <Button 
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-lg px-8 py-3"
+                className="bg-primary hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-3 w-full sm:w-auto"
               >
                 {t('startPredicting')}
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
-            <Link to="/about">
+            <Link to="/about" className="w-full sm:w-auto">
               <Button 
                 variant="outline" 
                 size="lg"
-                className="text-lg px-8 py-3"
+                className="text-base sm:text-lg px-6 sm:px-8 py-3 w-full sm:w-auto"
               >
-{t('learnMore')}
+                {t('learnMore')}
               </Button>
             </Link>
           </div>
@@ -50,34 +50,34 @@ export default function HomePage() {
       </section>
 
       {/* Weather Widget */}
-      <section className="py-8 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-8">
+      <section className="py-6 sm:py-8 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             <div className="lg:col-span-1">
               <WeatherWidget />
             </div>
             <div className="lg:col-span-2">
               <Card className="h-full">
-                <CardContent className="p-8 flex items-center justify-center">
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-primary-dark mb-4">
+                <CardContent className="p-4 sm:p-6 lg:p-8 flex items-center justify-center">
+                  <div className="text-center w-full">
+                    <h3 className="text-xl sm:text-2xl font-bold text-primary-dark mb-3 sm:mb-4">
                       {t('realTimeIntelligence')}
                     </h3>
-                    <p className="text-gray-600 mb-6">
+                    <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                       {t('realTimeIntelligenceDesc')}
                     </p>
-                    <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
                       <div>
-                        <div className="text-2xl font-bold text-primary">5+</div>
-                        <div className="text-sm text-gray-600">{t('mlModels')}</div>
+                        <div className="text-xl sm:text-2xl font-bold text-primary">5+</div>
+                        <div className="text-xs sm:text-sm text-gray-600">{t('mlModels')}</div>
                       </div>
                       <div>
-                        <div className="text-2xl font-bold text-primary">92%</div>
-                        <div className="text-sm text-gray-600">{t('accuracy')}</div>
+                        <div className="text-xl sm:text-2xl font-bold text-primary">92%</div>
+                        <div className="text-xs sm:text-sm text-gray-600">{t('accuracy')}</div>
                       </div>
                       <div>
-                        <div className="text-2xl font-bold text-primary">10K+</div>
-                        <div className="text-sm text-gray-600">{t('dataPoints')}</div>
+                        <div className="text-xl sm:text-2xl font-bold text-primary">10K+</div>
+                        <div className="text-xs sm:text-sm text-gray-600">{t('dataPoints')}</div>
                       </div>
                     </div>
                   </div>
@@ -92,43 +92,43 @@ export default function HomePage() {
       <CropHealthInsights />
 
       {/* Why Krushak Section - Enhanced */}
-      <section className="py-12 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary-dark mb-4">{t('whyKrushak')}</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+      <section className="py-8 sm:py-12 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary-dark mb-3 sm:mb-4">{t('whyKrushak')}</h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               {t('discoverWhy')}
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <Card className="text-center shadow-sm hover:shadow-md transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="h-8 w-8 text-blue-500" />
+              <CardContent className="p-6 sm:p-8">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-blue-500" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{t('accurateRecommendations')}</h3>
-                <p className="text-gray-600">{t('accurateDesc')}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">{t('accurateRecommendations')}</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{t('accurateDesc')}</p>
               </CardContent>
             </Card>
             
             <Card className="text-center shadow-sm hover:shadow-md transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Zap className="h-8 w-8 text-green-500" />
+              <CardContent className="p-6 sm:p-8">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-green-500" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{t('easyToUse')}</h3>
-                <p className="text-gray-600">{t('easyDesc')}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">{t('easyToUse')}</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{t('easyDesc')}</p>
               </CardContent>
             </Card>
             
-            <Card className="text-center shadow-sm hover:shadow-md transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Database className="h-8 w-8 text-purple-500" />
+            <Card className="text-center shadow-sm hover:shadow-md transition-shadow sm:col-span-2 lg:col-span-1">
+              <CardContent className="p-6 sm:p-8">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <Database className="h-6 w-6 sm:h-8 sm:w-8 text-purple-500" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{t('basedOnData')}</h3>
-                <p className="text-gray-600">{t('dataDesc')}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">{t('basedOnData')}</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{t('dataDesc')}</p>
               </CardContent>
             </Card>
           </div>

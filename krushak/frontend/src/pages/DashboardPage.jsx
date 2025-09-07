@@ -174,19 +174,19 @@ const DashboardPage = () => {
     }
 
     return (
-        <div className="container mx-auto p-4 pt-10 max-w-7xl">
+        <div className="container mx-auto p-4 sm:p-6 pt-6 sm:pt-10 max-w-7xl">
             {/* Welcome Section */}
-            <div className="text-center mb-8">
-                <h1 className="text-4xl font-bold text-green-800 mb-2">
+            <div className="text-center mb-6 sm:mb-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800 mb-2">
                     {t('welcomeBackUser', { name: user?.name })}
                 </h1>
-                <p className="text-lg text-gray-600">
+                <p className="text-base sm:text-lg text-gray-600">
                     {t('personalizedDashboard')}
                 </p>
             </div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <Card className="bg-gradient-to-r from-green-500 to-green-600 text-white">
                     <CardContent className="pt-6">
                         <div className="text-3xl font-bold">{stats.totalPredictions}</div>
@@ -210,18 +210,18 @@ const DashboardPage = () => {
             </div>
 
             {/* Quick Actions */}
-            <Card className="mb-8 bg-gradient-to-r from-green-50 to-blue-50">
-                <CardContent className="pt-6">
+            <Card className="mb-6 sm:mb-8 bg-gradient-to-r from-green-50 to-blue-50">
+                <CardContent className="pt-4 sm:pt-6 p-4 sm:p-6">
                     <div className="text-center">
-                        <h3 className="text-xl font-semibold text-gray-800 mb-4">{t('quickActions')}</h3>
-                        <div className="flex flex-wrap justify-center gap-4">
-                            <Link to="/prediction">
-                                <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3">
+                        <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">{t('quickActions')}</h3>
+                        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+                            <Link to="/prediction" className="w-full sm:w-auto">
+                                <Button className="bg-green-600 hover:bg-green-700 text-white px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto text-sm sm:text-base">
                                     🌱 {t('makeNewPrediction')}
                                 </Button>
                             </Link>
-                            <Link to="/prediction">
-                                <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-6 py-3">
+                            <Link to="/prediction" className="w-full sm:w-auto">
+                                <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto text-sm sm:text-base">
                                     📊 {t('analyzeSoilHealth')}
                                 </Button>
                             </Link>
@@ -232,16 +232,16 @@ const DashboardPage = () => {
 
             {/* Predictions History */}
             <Card className="shadow-lg">
-                <CardHeader>
-                    <div className="flex items-center justify-between">
-                        <CardTitle className="text-2xl font-semibold text-green-700 flex items-center">
+                <CardHeader className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+                        <CardTitle className="text-lg sm:text-xl lg:text-2xl font-semibold text-green-700 flex items-center">
                             📈 {t('predictionHistory')}
                         </CardTitle>
                         <Button 
                             onClick={fetchPredictions}
                             variant="outline"
                             size="sm"
-                            className="border-green-600 text-green-600 hover:bg-green-50"
+                            className="border-green-600 text-green-600 hover:bg-green-50 text-xs sm:text-sm"
                         >
                             🔄 {t('refresh')}
                         </Button>

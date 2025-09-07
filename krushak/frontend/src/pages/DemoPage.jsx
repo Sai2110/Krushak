@@ -44,9 +44,9 @@ export default function DemoPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Button 
             variant="outline" 
             onClick={() => window.history.back()}
@@ -55,19 +55,19 @@ export default function DemoPage() {
             <ArrowLeft className="h-4 w-4 mr-2" />
 {t('backToHome')}
           </Button>
-          <h1 className="text-3xl font-bold text-primary-dark mb-2">{t('krushakDemo')}</h1>
-          <p className="text-gray-600">{t('seeHowWorks')}</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-primary-dark mb-2">{t('krushakDemo')}</h1>
+          <p className="text-base sm:text-lg text-gray-600">{t('seeHowWorks')}</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Input Data */}
           <Card>
-            <CardHeader>
-              <CardTitle>{t('sampleInputData')}</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-base sm:text-lg">{t('sampleInputData')}</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+            <CardContent className="p-4 sm:p-6 pt-0">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className="text-sm font-medium text-gray-600">{t('temperature')}</label>
                     <p className="text-lg font-semibold">{demoData.input.temperature}°C</p>

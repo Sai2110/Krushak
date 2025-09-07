@@ -19,37 +19,40 @@ export default function ConfidenceChart({ results }) {
 
   return (
     <Card className="shadow-sm">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <TrendingUp className="h-5 w-5 text-primary" />
+      <CardHeader className="p-4 sm:p-6">
+        <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+          <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
           Model Confidence Comparison
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="h-64">
+      <CardContent className="p-4 sm:p-6 pt-0">
+        <div className="h-48 sm:h-64">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData}>
+            <BarChart data={chartData} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis 
                 dataKey="model" 
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: 10 }}
                 angle={-45}
                 textAnchor="end"
-                height={60}
+                height={50}
+                interval={0}
               />
               <YAxis 
                 domain={[0, 100]} 
                 tickFormatter={(v) => `${v}%`}
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: 10 }}
+                width={40}
               />
               <Tooltip 
                 formatter={(value) => [`${value}%`, 'Confidence']}
-                labelStyle={{ color: '#374151' }}
+                labelStyle={{ color: '#374151', fontSize: '12px' }}
+                contentStyle={{ fontSize: '12px' }}
               />
               <Bar 
                 dataKey="confidence" 
                 fill="#16a34a"
-                radius={[4, 4, 0, 0]}
+                radius={[2, 2, 0, 0]}
               />
             </BarChart>
           </ResponsiveContainer>

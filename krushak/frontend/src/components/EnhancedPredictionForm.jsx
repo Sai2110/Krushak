@@ -137,33 +137,34 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
   ]
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
       {/* Weather Section */}
       <Card className="shadow-sm">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Cloud className="h-5 w-5 text-primary" />
-{t('weatherData')}
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+            <Cloud className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+            {t('weatherData')}
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="flex gap-4 items-end">
-            <div className="flex-1">
-              <Label htmlFor="city">{t('cityName')}</Label>
-              <div className="flex gap-2 mt-1">
+        <CardContent className="p-4 sm:p-6 pt-0">
+          <div className="flex flex-col sm:flex-row gap-4 items-end">
+            <div className="flex-1 w-full">
+              <Label htmlFor="city" className="text-sm sm:text-base">{t('cityName')}</Label>
+              <div className="flex flex-col sm:flex-row gap-2 mt-1">
                 <Input
                   id="city"
                   type="text"
                   placeholder={t('enterCityName')}
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="flex-1"
+                  className="flex-1 w-full"
                 />
                 <Button 
                   type="button"
                   onClick={fetchWeather}
                   disabled={weatherLoading || !city.trim()}
                   variant="outline"
+                  className="w-full sm:w-auto"
                 >
                   {weatherLoading ? t('loading') : t('getWeather')}
                 </Button>
@@ -175,11 +176,11 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
           </div>
           
           {weatherData && (
-            <div className="mt-4 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-green-200">
+            <div className="mt-4 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-green-200">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-green-600" />
-                  <span className="font-semibold text-green-800 text-lg">
+                  <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
+                  <span className="font-semibold text-green-800 text-base sm:text-lg">
                     {weatherData.city || city}
                   </span>
                 </div>
@@ -187,12 +188,12 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
                   <img 
                     src={`https://openweathermap.org/img/wn/${weatherData.icon}@2x.png`}
                     alt="Weather icon"
-                    className="h-12 w-12"
+                    className="h-10 w-10 sm:h-12 sm:w-12"
                   />
                 )}
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                 <div className="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
                   <Thermometer className="h-5 w-5 text-orange-500" />
                   <div>
@@ -251,21 +252,21 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
 
       {/* Prediction Form */}
       <Card className="shadow-sm">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Leaf className="h-5 w-5 text-primary" />
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+            <Leaf className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
             {t('fertilizerPrediction')}
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={submit} className="space-y-6">
+        <CardContent className="p-4 sm:p-6 pt-0">
+          <form onSubmit={submit} className="space-y-4 sm:space-y-6">
             {/* Environmental Parameters */}
             <div>
-              <h4 className="font-semibold mb-4 flex items-center gap-2">
+              <h4 className="font-semibold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
                 <Thermometer className="h-4 w-4 text-blue-500" />
                 {t('weatherData')}
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="temperature">{t('temperature')}</Label>
                   <Input
@@ -301,11 +302,11 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
 
             {/* Soil & Crop Parameters */}
             <div>
-              <h4 className="font-semibold mb-4 flex items-center gap-2">
+              <h4 className="font-semibold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
                 <Leaf className="h-4 w-4 text-green-500" />
-{t('soilCropParameters')}
+                {t('soilCropParameters')}
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="soilType">{t('soilType')}</Label>
                   <Select value={form.Soil_Type} onValueChange={(value) => update('Soil_Type', value)}>
@@ -337,11 +338,11 @@ export default function EnhancedPredictionForm({ onResult, weatherData, onWeathe
 
             {/* Nutrient Parameters */}
             <div>
-              <h4 className="font-semibold mb-4 flex items-center gap-2">
+              <h4 className="font-semibold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
                 <Zap className="h-4 w-4 text-purple-500" />
-{t('nutrientParameters')}
+                {t('nutrientParameters')}
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="nitrogen">{t('nitrogen')}</Label>
                   <Input

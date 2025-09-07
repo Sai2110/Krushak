@@ -82,19 +82,18 @@ export default function FutureVision() {
   };
 
   return (
-    <section className="py-12">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-primary-dark mb-4">
-            What's Next?
+    <section className="py-8 sm:py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary-dark mb-3 sm:mb-4">
+            {t('whatsNext')}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We're constantly innovating to bring you the most advanced
-            agricultural technology solutions
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            {t('constantlyInnovating')}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
@@ -102,22 +101,22 @@ export default function FutureVision() {
                 key={index}
                 className={`${feature.bgColor} border-0 shadow-sm hover:shadow-md transition-shadow`}
               >
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-3 p-4 sm:p-6">
                   <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <div
-                        className={`w-10 h-10 rounded-lg ${feature.bgColor} flex items-center justify-center`}
+                        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${feature.bgColor} flex items-center justify-center`}
                       >
-                        <IconComponent className={`h-5 w-5 ${feature.color}`} />
+                        <IconComponent className={`h-4 w-4 sm:h-5 sm:w-5 ${feature.color}`} />
                       </div>
-                      <CardTitle className="text-lg text-gray-800">
+                      <CardTitle className="text-base sm:text-lg text-gray-800 leading-tight">
                         {feature.title}
                       </CardTitle>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                <CardContent className="p-4 sm:p-6 pt-0">
+                  <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                     {feature.description}
                   </p>
                   <div className="flex justify-between items-center">

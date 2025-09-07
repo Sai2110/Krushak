@@ -104,21 +104,21 @@ export default function WeatherWidget() {
 
   return (
     <Card className="w-full shadow-sm">
-      <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2">
-          <Cloud className="h-5 w-5 text-primary" />
-          {t('currentWeather')} - {weatherData?.name || DEFAULT_CITY}
+      <CardHeader className="pb-3 p-4 sm:p-6">
+        <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+          <Cloud className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+          <span className="truncate">{t('currentWeather')} - {weatherData?.name || DEFAULT_CITY}</span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4 sm:p-6 pt-0">
         {/* Main Weather Info */}
-        <div className="mb-4 p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
+        <div className="mb-4 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-3xl font-bold text-gray-800">
+              <div className="text-2xl sm:text-3xl font-bold text-gray-800">
                 {Math.round(weatherData?.main?.temp || 0)}°C
               </div>
-              <div className="text-sm text-gray-600 capitalize">
+              <div className="text-xs sm:text-sm text-gray-600 capitalize">
                 {weatherData?.weather?.[0]?.description || 'Clear'}
               </div>
               <div className="text-xs text-gray-500">
@@ -126,10 +126,10 @@ export default function WeatherWidget() {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-sm text-gray-600">
+              <div className="text-xs sm:text-sm text-gray-600">
                 {t('high')}: {Math.round(weatherData?.main?.temp_max || 0)}°C
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-xs sm:text-sm text-gray-600">
                 {t('low')}: {Math.round(weatherData?.main?.temp_min || 0)}°C
               </div>
             </div>
@@ -137,7 +137,7 @@ export default function WeatherWidget() {
         </div>
 
         {/* Detailed Weather Grid */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-4">
           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
             <Droplets className="h-5 w-5 text-blue-500" />
             <div>
