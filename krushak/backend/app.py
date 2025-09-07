@@ -37,24 +37,31 @@ import ssl
 
 mongo_uri = os.getenv("MONGODB_URI")
 if not mongo_uri:
-    raise ValueError("MONGODB_URI environment variable is required")
+    print("⚠️  MONGODB_URI environment variable not set. Using dummy value for build process.")
+    mongo_uri = "mongodb://localhost:27017/krushak"  # Dummy value for build
 
 print(f"🔗 Connecting to MongoDB Atlas...")
 
-try:
-    # Method 1: Try with modern SSL using certifi
-    print("🔄 Method 1: Using certifi for SSL certificates...")
-    client = MongoClient(
-        mongo_uri,
-        tlsCAFile=certifi.where(),
-        serverSelectionTimeoutMS=10000,
-        connectTimeoutMS=10000,
-        socketTimeoutMS=20000,
-        retryWrites=True
-    )
-    client.admin.command("ping")
-    print("✅ Connected to MongoDB Atlas with certifi SSL!")
-    db = client.krushak_db
+# Check if we're in build mode (no MONGODB_URI set)
+if os.getenv("MONGODB_URI") is None:
+    print("⚠️  Build mode detected - skipping MongoDB connection")
+    client = None
+    db = None
+else:
+    try:
+        # Method 1: Try with modern SSL using certifi
+        print("🔄 Method 1: Using certifi for SSL certificates...")
+        client = MongoClient(
+            mongo_uri,
+            tlsCAFile=certifi.where(),
+            serverSelectionTimeoutMS=10000,
+            connectTimeoutMS=10000,
+            socketTimeoutMS=20000,
+            retryWrites=True
+        )
+        client.admin.command("ping")
+        print("✅ Connected to MongoDB Atlas with certifi SSL!")
+        db = client.krushak_db
     
 except Exception as e:
     print(f"❌ Method 1 failed: {str(e)[:100]}...")
@@ -113,6 +120,17 @@ except Exception as e:
             print("   5. Try using MongoDB Compass to test connection")
             raise e3
 
+# If we're in build mode, set dummy values
+if client is None:
+    print("⚠️  Using dummy database connection for build process")
+    client = None
+    db = None
+
+# Helper function to check if database is available
+def check_database():
+    if db is None:
+        return jsonify({"error": "Database not available in build mode"}), 503
+    return None
 
 bcrypt = Bcrypt()
 
@@ -282,6 +300,11 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
     # AUTHENTICATION ROUTES
     @app.route("/api/auth/signup", methods=["POST"])
     def signup():
+        # Check if database is available
+        db_check = check_database()
+        if db_check:
+            return db_check
+            
         try:
             data = request.get_json(force=True)
             name = data.get("name", "").strip()
@@ -335,6 +358,11 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
 
     @app.route("/api/auth/login", methods=["POST"])
     def login():
+        # Check if database is available
+        db_check = check_database()
+        if db_check:
+            return db_check
+            
         try:
             data = request.get_json(force=True)
             email = data.get("email", "").strip().lower()
@@ -385,6 +413,11 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
     @app.route("/api/auth/me", methods=["GET"])
     @auth_required
     def get_current_user():
+        # Check if database is available
+        db_check = check_database()
+        if db_check:
+            return db_check
+            
         try:
             user_id = g.user_id
             user = db.users.find_one({"_id": ObjectId(user_id)}, {"password": 0}) # Exclude password
@@ -399,6 +432,11 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
     @app.route("/api/predictions", methods=["POST"])
     @auth_required
     def save_prediction():
+        # Check if database is available
+        db_check = check_database()
+        if db_check:
+            return db_check
+            
         try:
             user_id = g.user_id
             prediction_data = request.get_json(force=True)
@@ -443,6 +481,11 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
     @app.route("/api/predictions", methods=["GET"])
     @auth_required
     def get_predictions():
+        # Check if database is available
+        db_check = check_database()
+        if db_check:
+            return db_check
+            
         try:
             user_id = g.user_id
             # Get user with predictions, sorted by timestamp (newest first)
