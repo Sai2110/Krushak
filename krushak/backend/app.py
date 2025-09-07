@@ -353,7 +353,9 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
             }), 201
             
         except Exception as e:
+            import traceback
             print(f"❌ Error in /api/auth/signup: {e}")
+            print(f"❌ Traceback: {traceback.format_exc()}")
             return jsonify({"message": "Internal server error. Please try again."}), 500
 
     @app.route("/api/auth/login", methods=["POST"])
@@ -405,7 +407,9 @@ def create_app(artifacts: Dict[str, Any]) -> Flask:
             }), 200
             
         except Exception as e:
+            import traceback
             print(f"❌ Error in /api/auth/login: {e}")
+            print(f"❌ Traceback: {traceback.format_exc()}")
             return jsonify({"message": "Internal server error. Please try again."}), 500
 
     # from auth_middleware import auth_required # Import here to avoid circular dependency
