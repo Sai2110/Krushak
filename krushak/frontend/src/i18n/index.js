@@ -190,7 +190,7 @@ const resources = {
       signInHere: 'Sign in here',
       
       // Dashboard
-      welcomeBackUser: 'Welcome back, {name}! 👋',
+      welcomeBackUser: 'Welcome, {name}! 👋',
       personalizedDashboard: 'Here\'s your personalized farming insights dashboard',
       totalPredictions: 'Total Predictions',
       avgSoilHealth: 'Avg. Soil Health',
