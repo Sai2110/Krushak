@@ -39,6 +39,10 @@ mongo_uri = os.getenv("MONGODB_URI")
 if not mongo_uri:
     print("⚠️  MONGODB_URI environment variable not set. Using dummy value for build process.")
     mongo_uri = "mongodb://localhost:27017/krushak"  # Dummy value for build
+else:
+    # Clean the URI by removing any newline characters
+    mongo_uri = mongo_uri.strip()
+    print(f"🔗 Cleaned MongoDB URI: {mongo_uri[:50]}...")
 
 print(f"🔗 Connecting to MongoDB Atlas...")
 
